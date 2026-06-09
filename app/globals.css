@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fafafa;
+  --foreground: #18181b;
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #f4f4f5;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: rgb(124 58 237 / 0.3);
+  color: #18181b;
+}
+
+.dark ::selection {
+  background-color: rgb(124 58 237 / 0.4);
+  color: #f4f4f5;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e4e4e7;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a1a1aa;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+/* Hero: grid de linhas — claro */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(161, 161, 170, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(161, 161, 170, 0.18) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Hero: grid de linhas — escuro */
+.dark .hero-grid {
+  background-image:
+    linear-gradient(rgba(113, 113, 122, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(113, 113, 122, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Stack: dot grid — claro */
+.dot-grid {
+  background-image: radial-gradient(circle, #d4d4d8 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Stack: dot grid — escuro */
+.dark .dot-grid {
+  background-image: radial-gradient(circle, #3f3f46 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Carrossel da seção Stack */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
