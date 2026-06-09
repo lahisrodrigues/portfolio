@@ -39,11 +39,62 @@ function useTypewriter(text: string, speed: number, delay: number) {
   return { displayed, done };
 }
 
+function useBadgeTypewriter(text: string) {
+  const [displayed, setDisplayed] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    let intervalId: ReturnType<typeof setInterval> | null = null;
+    let cancelled = false;
+
+    function runCycle() {
+      if (cancelled) return;
+      setDisplayed("");
+      setShowCursor(true);
+      let i = 0;
+      intervalId = setInterval(() => {
+        if (cancelled) {
+          if (intervalId) clearInterval(intervalId);
+          return;
+        }
+        i++;
+        setDisplayed(text.slice(0, i));
+        if (i >= text.length) {
+          if (intervalId) clearInterval(intervalId);
+          setShowCursor(false);
+          const t1 = setTimeout(() => {
+            if (cancelled) return;
+            setDisplayed("");
+            const t2 = setTimeout(() => {
+              if (cancelled) return;
+              runCycle();
+            }, 500);
+            timers.push(t2);
+          }, 2000);
+          timers.push(t1);
+        }
+      }, 80);
+    }
+
+    runCycle();
+
+    return () => {
+      cancelled = true;
+      if (intervalId) clearInterval(intervalId);
+      timers.forEach(clearTimeout);
+    };
+  }, [text]);
+
+  return { displayed, showCursor };
+}
+
 export default function Hero() {
   const { lang } = useLanguage();
   const t = translations[lang].hero;
   const { displayed, done } = useTypewriter(t.typewriter, CHAR_SPEED, START_DELAY);
   const valueDelay = (START_DELAY + t.typewriter.length * CHAR_SPEED + 400) / 1000;
+  const { displayed: badgeDisplayed, showCursor: badgeShowCursor } = useBadgeTypewriter(t.badge);
 
   return (
     <section
@@ -64,10 +115,10 @@ export default function Hero() {
       />
 
       {/* Conteúdo */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 md:px-8 lg:px-16 text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 md:px-8 lg:px-16 text-center mt-16 md:mt-20">
         <div className="flex flex-col items-center gap-8 md:gap-10">
 
-          {/* Badge */}
+          {/* Badge animado infinito */}
           <motion.span
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-600/40 dark:border-violet-700/60 bg-violet-50 dark:bg-violet-950/40 text-violet-600 dark:text-violet-300 text-xs font-mono tracking-widest uppercase"
             initial={{ opacity: 0, y: 20 }}
@@ -79,12 +130,17 @@ export default function Hero() {
               animate={{ opacity: [1, 0.3, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            {t.badge}
+            <span>
+              {badgeDisplayed}
+              {badgeShowCursor && (
+                <span className="inline-block w-[1px] h-[0.8em] bg-violet-600 dark:bg-violet-400 align-middle ml-0.5 animate-pulse" />
+              )}
+            </span>
           </motion.span>
 
-          {/* Título principal — responsivo mobile-first */}
+          {/* Título principal — preto no light mode, branco no dark */}
           <motion.h1
-            className="font-mono text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-none text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-500 to-violet-600 dark:from-violet-400 dark:via-indigo-300 dark:to-violet-400 drop-shadow-[0_0_50px_rgba(139,92,246,0.25)] break-words w-full"
+            className="font-mono text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-none text-zinc-950 dark:text-white break-words w-full"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.7 }}
@@ -92,9 +148,9 @@ export default function Hero() {
             Lais Rodrigues
           </motion.h1>
 
-          {/* Code comment */}
+          {/* Code comment — estilo terminal */}
           <motion.p
-            className="font-mono text-xs text-zinc-400 dark:text-zinc-600"
+            className="font-mono text-xs text-zinc-500 dark:text-zinc-600"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.4 }}
@@ -112,10 +168,10 @@ export default function Hero() {
             <p className="font-mono text-base sm:text-lg md:text-xl text-zinc-700 dark:text-zinc-300">
               {t.subtitle}
             </p>
-            <p className="font-mono text-lg sm:text-2xl md:text-3xl text-violet-600 dark:text-violet-400 font-semibold min-h-[1.75rem] sm:min-h-[2rem] md:min-h-[2.25rem]">
+            <p className="font-mono text-lg sm:text-2xl md:text-3xl text-zinc-900 dark:text-violet-400 font-semibold min-h-[1.75rem] sm:min-h-[2rem] md:min-h-[2.25rem]">
               {displayed}
               <span
-                className={`inline-block w-[2px] h-[0.85em] bg-violet-600 dark:bg-violet-400 align-middle ml-0.5 translate-y-[-1px] ${
+                className={`inline-block w-[2px] h-[0.85em] bg-zinc-900 dark:bg-violet-400 align-middle ml-0.5 translate-y-[-1px] ${
                   done ? "animate-pulse" : ""
                 }`}
               />
@@ -141,14 +197,14 @@ export default function Hero() {
           >
             <a
               href="#projetos"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg border border-violet-500 text-violet-600 dark:text-violet-300 font-sans font-semibold hover:bg-violet-50 dark:hover:bg-violet-950/60 hover:border-violet-500 dark:hover:border-violet-400 hover:scale-105 transition-all duration-200 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg border border-zinc-900 text-zinc-900 dark:border-violet-500 dark:text-violet-300 font-sans font-semibold hover:bg-zinc-900 hover:text-white dark:hover:bg-violet-950/60 dark:hover:border-violet-400 transition-all duration-300 ease-in-out w-full sm:w-auto"
             >
               <ArrowRight size={18} />
               {t.ctaPrimary}
             </a>
             <a
               href="#contato"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-sans font-semibold hover:scale-105 transition-all duration-200 w-full sm:w-auto shadow-lg shadow-violet-900/30"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-zinc-900 hover:bg-zinc-800 dark:bg-violet-600 dark:hover:bg-violet-500 text-white font-sans font-semibold transition-all duration-300 ease-in-out w-full sm:w-auto shadow-lg shadow-zinc-900/20 dark:shadow-violet-900/30"
             >
               <Mail size={18} />
               {t.ctaSecondary}
@@ -167,7 +223,7 @@ export default function Hero() {
                 {i > 0 && (
                   <span className="text-zinc-300 dark:text-zinc-700 hidden md:inline" aria-hidden="true">·</span>
                 )}
-                <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">{diff}</span>
+                <span className="font-mono text-xs text-zinc-600 dark:text-zinc-400">{diff}</span>
               </span>
             ))}
           </motion.div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useLanguage } from "@/lib/language-context";
@@ -18,8 +19,8 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t.about, href: "#sobre" },
-    { label: t.projects, href: "#projetos" },
     { label: t.stack, href: "#stack" },
+    { label: t.projects, href: "#projetos" },
     { label: t.contact, href: "#contato" },
   ];
 
@@ -63,7 +64,7 @@ export default function Navbar() {
           <a
             href="#inicio"
             onClick={close}
-            className="text-zinc-900 dark:text-white font-bold text-base md:text-lg hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-200 z-50 relative"
+            className="text-zinc-900 dark:text-white font-bold text-base md:text-lg hover:text-violet-600 dark:hover:text-violet-400 transition-all duration-300 ease-in-out z-50 relative"
           >
             Lais Rodrigues
           </a>
@@ -74,23 +75,22 @@ export default function Navbar() {
               <a
                 key={href}
                 href={href}
-                className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200 px-2"
+                className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out px-2"
               >
                 {label}
               </a>
             ))}
 
-            {/* Theme toggle — CSS approach avoids hydration mismatch */}
             <button
               onClick={() => setTheme("light")}
-              className="hidden dark:flex p-2 rounded-lg text-zinc-300 hover:text-white transition-colors duration-200"
+              className="hidden dark:flex p-2 rounded-lg text-zinc-300 hover:text-white transition-all duration-300 ease-in-out"
               aria-label="Mudar para modo claro"
             >
               <Sun size={18} />
             </button>
             <button
               onClick={() => setTheme("dark")}
-              className="flex dark:hidden p-2 rounded-lg text-zinc-700 hover:text-zinc-900 transition-colors duration-200"
+              className="flex dark:hidden p-2 rounded-lg text-zinc-700 hover:text-zinc-900 transition-all duration-300 ease-in-out"
               aria-label="Mudar para modo escuro"
             >
               <Moon size={18} />
@@ -100,7 +100,7 @@ export default function Navbar() {
             <div ref={langRef} className="relative">
               <button
                 onClick={() => setLangOpen((v) => !v)}
-                className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-mono text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
+                className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-mono text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out"
               >
                 {lang.toUpperCase()}
                 <ChevronDown
@@ -132,7 +132,7 @@ export default function Navbar() {
 
             <a
               href="#contato"
-              className="px-4 py-2 text-sm bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg transition-colors duration-200"
+              className="px-4 py-2 text-sm bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
             >
               {t.cta}
             </a>
@@ -142,21 +142,21 @@ export default function Navbar() {
           <div className="md:hidden flex items-center gap-1">
             <button
               onClick={() => setTheme("light")}
-              className="hidden dark:flex p-2 text-zinc-300 hover:text-white transition-colors duration-200"
+              className="hidden dark:flex p-2 text-zinc-300 hover:text-white transition-all duration-300 ease-in-out"
               aria-label="Mudar para modo claro"
             >
               <Sun size={18} />
             </button>
             <button
               onClick={() => setTheme("dark")}
-              className="flex dark:hidden p-2 text-zinc-700 hover:text-zinc-900 transition-colors duration-200"
+              className="flex dark:hidden p-2 text-zinc-700 hover:text-zinc-900 transition-all duration-300 ease-in-out"
               aria-label="Mudar para modo escuro"
             >
               <Moon size={18} />
             </button>
 
             <button
-              className="relative z-50 p-2 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
+              className="relative z-50 p-2 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out"
               onClick={() => setIsOpen((v) => !v)}
               aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={isOpen}
@@ -167,61 +167,69 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Drawer mobile */}
-      <div
-        className={`md:hidden fixed inset-0 z-40 transition-all duration-300 ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div
-          className="absolute inset-0 bg-zinc-900/60 backdrop-blur-sm"
-          onClick={close}
-          aria-hidden="true"
-        />
-        <div
-          className={`absolute top-16 left-0 right-0 bg-white/95 dark:bg-zinc-950/95 border-b border-zinc-200 dark:border-zinc-800 px-4 pb-6 pt-2 transition-transform duration-300 ${
-            isOpen ? "translate-y-0" : "-translate-y-4"
-          }`}
-        >
-          <nav className="flex flex-col gap-1">
-            {navLinks.map(({ label, href }) => (
-              <a
-                key={href}
-                href={href}
-                onClick={close}
-                className="py-3.5 px-2 text-zinc-700 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 font-medium border-b border-zinc-200 dark:border-zinc-800 last:border-0 transition-colors duration-200"
-              >
-                {label}
-              </a>
-            ))}
-
-            {/* Language toggle mobile */}
-            <div className="flex gap-2 pt-4 pb-2">
-              {(["pt", "en"] as Lang[]).map((l) => (
-                <button
-                  key={l}
-                  onClick={() => setLang(l)}
-                  className={`flex-1 py-2 rounded-lg text-sm font-mono font-medium transition-colors ${
-                    lang === l
-                      ? "bg-violet-600 text-white"
-                      : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
-                  }`}
-                >
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
-
-            <a
-              href="#contato"
+      {/* Drawer mobile com AnimatePresence */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="md:hidden fixed inset-0 z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div
+              className="absolute inset-0 bg-zinc-900/60 backdrop-blur-sm"
               onClick={close}
-              className="mt-2 py-3.5 text-center bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg transition-colors duration-200"
+              aria-hidden="true"
+            />
+            <motion.div
+              className="absolute top-16 left-0 right-0 bg-white/95 dark:bg-zinc-950/95 border-b border-zinc-200 dark:border-zinc-800 px-4 pb-6 pt-2"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
             >
-              {t.cta}
-            </a>
-          </nav>
-        </div>
-      </div>
+              <nav className="flex flex-col gap-1">
+                {navLinks.map(({ label, href }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    onClick={close}
+                    className="py-3.5 px-2 text-zinc-700 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 font-medium border-b border-zinc-200 dark:border-zinc-800 last:border-0 transition-all duration-300 ease-in-out"
+                  >
+                    {label}
+                  </a>
+                ))}
+
+                {/* Language toggle mobile */}
+                <div className="flex gap-2 pt-4 pb-2">
+                  {(["pt", "en"] as Lang[]).map((l) => (
+                    <button
+                      key={l}
+                      onClick={() => setLang(l)}
+                      className={`flex-1 py-2 rounded-lg text-sm font-mono font-medium transition-all duration-300 ease-in-out ${
+                        lang === l
+                          ? "bg-violet-600 text-white"
+                          : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                      }`}
+                    >
+                      {l.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+
+                <a
+                  href="#contato"
+                  onClick={close}
+                  className="mt-2 py-3.5 text-center bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
+                >
+                  {t.cta}
+                </a>
+              </nav>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

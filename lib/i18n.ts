@@ -10,7 +10,7 @@ export const translations = {
     hero: {
       badge: "Disponível para novos projetos",
       codeComment: "// disponível para novos projetos · Brasil · remoto",
-      subtitle: "Desenvolvedora Fullstack",
+      subtitle: "Desenvolvedora Full-Stack",
       typewriter: "com foco em Landing Pages de alta conversão",
       paragraph:
         "Sites e sistemas que convertem. Entrego com prazo, código limpo e comunicação direta — sem enrolação.",
@@ -158,7 +158,7 @@ export const translations = {
     hero: {
       badge: "Available for new projects",
       codeComment: "// available for new projects · Brazil · remote",
-      subtitle: "Fullstack Developer",
+      subtitle: "Full-Stack Developer",
       typewriter: "focused on high-converting Landing Pages",
       paragraph:
         "Sites and systems that convert. Delivered on time, with clean code and direct communication — no fluff.",

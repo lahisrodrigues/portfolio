@@ -23,9 +23,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Lais Rodrigues | Desenvolvedora Fullstack",
+  title: "Lais Rodrigues | Desenvolvedora Full-Stack",
   description:
-    "Desenvolvedora Fullstack especializada em Next.js, TypeScript e Python. APIs, dashboards e integrações entregues com prazo, qualidade e comunicação clara. Disponível para projetos sob demanda e contratos.",
+    "Desenvolvedora Full-Stack especializada em Next.js, TypeScript e Python. APIs, dashboards e integrações entregues com prazo, qualidade e comunicação clara. Disponível para projetos sob demanda e contratos.",
   keywords: [
     "desenvolvedora fullstack",
     "Next.js",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Lais Rodrigues" }],
   openGraph: {
-    title: "Lais Rodrigues | Desenvolvedora Fullstack",
+    title: "Lais Rodrigues | Desenvolvedora Full-Stack",
     description:
       "APIs, dashboards e integrações entregues com prazo e qualidade. Disponível para novos projetos.",
     type: "website",

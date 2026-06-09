@@ -19,21 +19,21 @@ export default function Footer() {
 
         <div className="flex items-center gap-6">
           <a
-            href="https://github.com/laisrodrigues"
+            href="https://github.com/lahisrodrigues"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="flex items-center gap-1.5 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
+            aria-label="GitHub de Lais Rodrigues (@lahisrodrigues)"
+            className="flex items-center gap-1.5 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out"
           >
             <Github size={16} />
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/laisrodrigues"
+            href="https://www.linkedin.com/in/laisrodrigues07/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="flex items-center gap-1.5 hover:text-zinc-900 dark:hover:text-white transition-colors duration-200"
+            aria-label="LinkedIn de Lais Rodrigues"
+            className="flex items-center gap-1.5 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out"
           >
             <Linkedin size={16} />
             LinkedIn

@@ -50,7 +50,7 @@ export default function About() {
 
       {/* Overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-zinc-50/92 via-zinc-50/75 to-zinc-50/92 dark:from-zinc-950/98 dark:via-zinc-950/92 dark:to-zinc-950/98 pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/80 to-white/92 dark:from-zinc-950/92 dark:via-zinc-950/80 dark:to-zinc-950/92 pointer-events-none"
         aria-hidden="true"
       />
 
@@ -60,7 +60,7 @@ export default function About() {
           className="mb-12 md:mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
           <p className="font-mono text-violet-600 dark:text-violet-400 text-xs tracking-widest uppercase mb-3">
@@ -76,7 +76,7 @@ export default function About() {
           variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
         >
           {t.cards.map(({ title, description }, i) => {
             const Icon = cardIcons[i];
