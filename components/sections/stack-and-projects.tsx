@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/i18n";
 
@@ -41,7 +42,7 @@ const badgeStyles = [
 function TechCard({ name, symbol }: { name: string; symbol: string }) {
   return (
     <div className="flex items-center gap-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-6 py-4 mx-4 shrink-0">
-      <span className="font-mono text-base text-violet-600 dark:text-violet-400 w-7 text-center leading-none select-none">
+      <span className="font-mono text-base text-brand dark:text-blue-400 w-7 text-center leading-none select-none">
         {symbol}
       </span>
       <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
@@ -62,7 +63,7 @@ export default function StackAndProjects() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(35, 35, 255, 0.05) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -103,7 +104,7 @@ export default function StackAndProjects() {
       </div>
 
       {/* Projetos em andamento */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
+      <div id="projetos" className="relative z-10 max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
         <motion.div
           className="mb-10 md:mb-12 text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -111,7 +112,7 @@ export default function StackAndProjects() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-violet-600 dark:text-violet-400 text-xs tracking-widest uppercase mb-3">
+          <p className="font-mono text-brand dark:text-blue-400 text-xs tracking-widest uppercase mb-3">
             {tProjects.eyebrow}
           </p>
           <h3 className="font-mono text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">
@@ -123,54 +124,86 @@ export default function StackAndProjects() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {tProjects.items.map(({ title, description, badge }, i) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="relative flex flex-col p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 backdrop-blur-sm hover:border-violet-500 dark:hover:border-violet-700 transition-colors duration-300"
-            >
-              {/* Indicador pulsante */}
-              <div className="absolute top-4 right-4">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${pulseColors[i]} opacity-50`} />
-                  <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${pulseColors[i]}`} />
-                </span>
-              </div>
-
-              {/* Badge(s) de status */}
-              <div className="flex items-center gap-2 mb-4 flex-wrap">
-                <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono border ${badgeStyles[i]}`}>
-                  {badge}
-                </span>
-                {i === 0 && (
-                  <span className="text-green-400 font-mono text-xs animate-pulse">● LIVE</span>
-                )}
-              </div>
-
-              <h3 className="font-mono text-zinc-900 dark:text-white font-semibold text-base mb-2 pr-6">
-                {title}
-              </h3>
-              <p className="font-sans text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed mb-4 flex-1">
-                {description}
-              </p>
-
-              {/* Stack chips */}
-              <div className="flex flex-wrap gap-2">
-                {(stacks[i] as readonly string[]).map((tech) => (
-                  <span
-                    key={tech}
-                    className="font-mono text-xs px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700"
-                  >
-                    {tech}
+          {tProjects.items.map(({ title, description, badge }, i) => {
+            const isClickable = i === 0;
+            const card = (
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                whileHover={{
+                  y: -6,
+                  scale: isClickable ? 1.02 : 1,
+                  transition: { duration: 0.2 },
+                }}
+                className={`relative flex flex-col p-6 rounded-xl border bg-zinc-50 dark:bg-zinc-900/50 backdrop-blur-sm transition-all duration-300 ${
+                  isClickable
+                    ? "border-zinc-200 dark:border-zinc-800 hover:border-brand dark:hover:border-brand"
+                    : "border-zinc-200 dark:border-zinc-800 hover:border-blue-500 dark:hover:border-blue-700"
+                }`}
+              >
+                {/* Indicador pulsante + ícone de link */}
+                <div className="absolute top-4 right-4 flex items-center gap-2">
+                  {isClickable && (
+                    <ExternalLink
+                      size={14}
+                      className="text-zinc-500 group-hover:text-brand transition-colors duration-200"
+                    />
+                  )}
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${pulseColors[i]} opacity-50`} />
+                    <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${pulseColors[i]}`} />
                   </span>
-                ))}
+                </div>
+
+                {/* Badge(s) de status */}
+                <div className="flex items-center gap-2 mb-4 flex-wrap">
+                  <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono border ${badgeStyles[i]}`}>
+                    {badge}
+                  </span>
+                  {isClickable && (
+                    <span className="text-green-400 font-mono text-xs animate-pulse">● LIVE</span>
+                  )}
+                </div>
+
+                <h3 className="font-mono text-zinc-900 dark:text-white font-semibold text-base mb-2 pr-6">
+                  {title}
+                </h3>
+                <p className="font-sans text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed mb-4 flex-1">
+                  {description}
+                </p>
+
+                {/* Stack chips */}
+                <div className="flex flex-wrap gap-2">
+                  {(stacks[i] as readonly string[]).map((tech) => (
+                    <span
+                      key={tech}
+                      className="font-mono text-xs px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+
+            return isClickable ? (
+              <a
+                key={title}
+                href="https://psijuliedelazari.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                {card}
+              </a>
+            ) : (
+              <div key={title} className="contents">
+                {card}
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
