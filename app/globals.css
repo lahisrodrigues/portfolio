@@ -28,12 +28,12 @@ body {
 }
 
 ::selection {
-  background-color: rgb(124 58 237 / 0.3);
+  background-color: rgb(35 35 255 / 0.3);
   color: #18181b;
 }
 
 .dark ::selection {
-  background-color: rgb(124 58 237 / 0.4);
+  background-color: rgb(35 35 255 / 0.4);
   color: #f4f4f5;
 }
 
@@ -60,7 +60,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7c3aed;
+  background: #2323FF;
 }
 
 /* Hero: grid de linhas — claro */

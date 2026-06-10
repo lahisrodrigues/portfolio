@@ -39,7 +39,7 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full min-w-0 max-w-full px-4 py-3 rounded-lg bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-violet-500 transition-colors duration-200 disabled:opacity-50 font-sans text-sm md:text-base";
+    "w-full min-w-0 max-w-full px-4 py-3 rounded-lg bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-blue-500 transition-colors duration-200 disabled:opacity-50 font-sans text-sm md:text-base";
 
   return (
     <section
@@ -68,10 +68,10 @@ export default function ContactForm() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-violet-600 dark:text-violet-400 text-xs tracking-widest uppercase mb-3">
+          <p className="font-mono text-brand dark:text-blue-400 text-xs tracking-widest uppercase mb-3">
             {t.eyebrow}
           </p>
-          <h2 className="font-mono text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-3 drop-shadow-[0_0_20px_rgba(139,92,246,0.15)]">
+          <h2 className="font-mono text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-3 drop-shadow-[0_0_20px_rgba(35,35,255,0.15)]">
             {t.title}
           </h2>
           <p className="font-sans text-base text-zinc-700 dark:text-zinc-300">
@@ -185,7 +185,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-violet-600 hover:bg-violet-500 disabled:bg-violet-400 dark:disabled:bg-violet-800 disabled:cursor-not-allowed text-white font-sans font-semibold rounded-lg transition-colors duration-200"
+              className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand hover:bg-blue-500 disabled:bg-blue-400 dark:disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-sans font-semibold rounded-lg transition-colors duration-200"
             >
               {isPending ? (
                 <>

@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        brand: '#2323FF',
+      },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "monospace"],

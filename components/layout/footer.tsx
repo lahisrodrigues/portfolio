@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-700 dark:text-zinc-300">
         <p className="text-center sm:text-left">
           © {year} Lais Rodrigues —{" "}
-          <span className="text-violet-600 dark:text-violet-400">{t.open}</span>
+          <span className="text-brand dark:text-blue-400">{t.open}</span>
         </p>
 
         <div className="flex items-center gap-6">

@@ -22,7 +22,7 @@ export default function BackToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.2 }}
-          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-violet-600 hover:bg-violet-700 text-white shadow-lg shadow-violet-900/30 transition-colors duration-200"
+          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-brand hover:bg-blue-700 text-white shadow-lg shadow-blue-900/30 transition-colors duration-200"
           aria-label="Voltar ao topo"
         >
           <ArrowUp size={20} />

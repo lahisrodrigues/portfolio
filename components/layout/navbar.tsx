@@ -21,6 +21,7 @@ export default function Navbar() {
     { label: t.about, href: "#sobre" },
     { label: t.stack, href: "#stack" },
     { label: t.projects, href: "#projetos" },
+    { label: t.process, href: "#processo" },
     { label: t.contact, href: "#contato" },
   ];
 
@@ -64,7 +65,7 @@ export default function Navbar() {
           <a
             href="#inicio"
             onClick={close}
-            className="text-zinc-900 dark:text-white font-bold text-base md:text-lg hover:text-violet-600 dark:hover:text-violet-400 transition-all duration-300 ease-in-out z-50 relative"
+            className="text-zinc-900 dark:text-white font-bold text-base md:text-lg hover:text-brand dark:hover:text-blue-400 transition-all duration-300 ease-in-out z-50 relative"
           >
             Lais Rodrigues
           </a>
@@ -119,7 +120,7 @@ export default function Navbar() {
                       }}
                       className={`w-full px-4 py-2.5 text-left text-sm font-mono transition-colors ${
                         lang === l
-                          ? "text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/40"
+                          ? "text-brand dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40"
                           : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800"
                       }`}
                     >
@@ -132,7 +133,7 @@ export default function Navbar() {
 
             <a
               href="#contato"
-              className="px-4 py-2 text-sm bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
+              className="px-4 py-2 text-sm bg-brand hover:bg-blue-500 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
             >
               {t.cta}
             </a>
@@ -195,7 +196,7 @@ export default function Navbar() {
                     key={href}
                     href={href}
                     onClick={close}
-                    className="py-3.5 px-2 text-zinc-700 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 font-medium border-b border-zinc-200 dark:border-zinc-800 last:border-0 transition-all duration-300 ease-in-out"
+                    className="py-3.5 px-2 text-zinc-700 dark:text-zinc-300 hover:text-brand dark:hover:text-blue-400 font-medium border-b border-zinc-200 dark:border-zinc-800 last:border-0 transition-all duration-300 ease-in-out"
                   >
                     {label}
                   </a>
@@ -209,7 +210,7 @@ export default function Navbar() {
                       onClick={() => setLang(l)}
                       className={`flex-1 py-2 rounded-lg text-sm font-mono font-medium transition-all duration-300 ease-in-out ${
                         lang === l
-                          ? "bg-violet-600 text-white"
+                          ? "bg-brand text-white"
                           : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
                       }`}
                     >
@@ -221,7 +222,7 @@ export default function Navbar() {
                 <a
                   href="#contato"
                   onClick={close}
-                  className="mt-2 py-3.5 text-center bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
+                  className="mt-2 py-3.5 text-center bg-brand hover:bg-blue-500 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
                 >
                   {t.cta}
                 </a>

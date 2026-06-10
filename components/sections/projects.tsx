@@ -84,7 +84,7 @@ export default function Projects() {
 
   return (
     <section
-      id="projetos"
+      id="processo"
       className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-zinc-950"
     >
       <video
@@ -113,7 +113,7 @@ export default function Projects() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-violet-400 text-xs tracking-widest uppercase mb-3">
+          <p className="font-mono text-blue-400 text-xs tracking-widest uppercase mb-3">
             {t.eyebrow}
           </p>
           <h2 className="font-mono text-3xl md:text-4xl font-bold text-white mb-4">
@@ -126,7 +126,7 @@ export default function Projects() {
 
         <div className="relative">
           <motion.div
-            className="hidden lg:block absolute border-t-2 border-dashed border-violet-400/30 pointer-events-none z-0"
+            className="hidden lg:block absolute border-t-2 border-dashed border-blue-400/30 pointer-events-none z-0"
             style={{ top: "5rem", left: "12.5%", right: "12.5%", transformOrigin: "left" }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -146,14 +146,14 @@ export default function Projects() {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
                   whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                  className="relative flex flex-col p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-violet-400/50 transition-colors duration-300"
+                  className="relative flex flex-col p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-blue-400/50 transition-colors duration-300"
                 >
-                  <span className="font-mono text-4xl font-bold text-violet-400/30 leading-none select-none mb-1">
+                  <span className="font-mono text-4xl font-bold text-blue-400/30 leading-none select-none mb-1">
                     {num}
                   </span>
 
-                  <div className="w-10 h-10 rounded-lg bg-violet-950/80 flex items-center justify-center mb-4">
-                    <Icon size={20} className="text-violet-400" />
+                  <div className="w-10 h-10 rounded-lg bg-blue-950/80 flex items-center justify-center mb-4">
+                    <Icon size={20} className="text-blue-400" />
                   </div>
 
                   {i === 2 ? (

@@ -63,10 +63,13 @@ export default function About() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-violet-600 dark:text-violet-400 text-xs tracking-widest uppercase mb-3">
+          <p className="font-mono text-brand dark:text-blue-400 text-xs tracking-widest uppercase mb-3">
             {t.eyebrow}
           </p>
-          <h2 className="font-mono text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4">
+          <h2
+            className="font-mono text-3xl md:text-4xl font-bold text-white dark:text-white mb-4"
+            style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}
+          >
             {t.title}
           </h2>
         </motion.div>
@@ -84,15 +87,15 @@ export default function About() {
               <motion.div
                 key={title}
                 variants={item}
-                className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 backdrop-blur-md hover:border-violet-500 dark:hover:border-violet-700 transition-colors duration-300 w-full"
+                className="p-6 rounded-xl bg-zinc-900/80 backdrop-blur-md border border-zinc-700 hover:border-blue-500 transition-colors duration-300 w-full"
               >
-                <div className="w-10 h-10 rounded-lg bg-violet-100 dark:bg-violet-950 flex items-center justify-center mb-4">
-                  <Icon size={20} className="text-violet-600 dark:text-violet-400" />
+                <div className="w-10 h-10 rounded-lg bg-blue-500/10 dark:bg-blue-500/10 flex items-center justify-center mb-4">
+                  <Icon size={20} className="text-blue-400 dark:text-blue-400" />
                 </div>
-                <h3 className="font-mono text-zinc-900 dark:text-white font-semibold text-lg mb-2">
+                <h3 className="font-mono text-white font-bold text-lg mb-2" style={{ textShadow: 'none' }}>
                   {title}
                 </h3>
-                <p className="font-sans text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
+                <p className="font-sans text-zinc-300 text-sm leading-relaxed">
                   {description}
                 </p>
               </motion.div>

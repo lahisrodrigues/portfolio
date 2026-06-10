@@ -4,6 +4,7 @@ export const translations = {
       about: "Sobre",
       projects: "Projetos",
       stack: "Stack",
+      process: "Processo",
       contact: "Contato",
       cta: "Contratar",
     },
@@ -48,19 +49,19 @@ export const translations = {
       title: "Minha trajetória",
       items: [
         {
-          year: "2022",
-          title: "Início na programação — preencha aqui",
-          description: "Descreva sua experiência aqui...",
-        },
-        {
           year: "2023",
-          title: "Primeiro projeto freelance — preencha aqui",
-          description: "Descreva sua experiência aqui...",
+          title: "O primeiro contato com programação.",
+          description: "Vi um sistema simples resolvendo problemas matemáticos em Python e me apaixonei na hora. Sempre fui fascinada por matemática, números e lógica — perceber que podia transformar isso em código foi o clique que mudou tudo.",
         },
         {
           year: "2024",
-          title: "Especialização em Fullstack — preencha aqui",
-          description: "Descreva sua experiência aqui...",
+          title: "Início da graduação em Sistemas de Informação.",
+          description: "Foi minha segunda graduação e uma das melhores decisões que tomei. Ver o crescimento constante da tecnologia e entender que poderia trabalhar de qualquer lugar do mundo com algo que eu amava fazer me deu ainda mais certeza do caminho.",
+        },
+        {
+          year: "2025",
+          title: "Especialização em desenvolvimento Full-Stack.",
+          description: "Entre cursos, projetos práticos e muita dedicação além da faculdade, consolidei meu conhecimento em desenvolvimento Full-Stack — do front-end ao back-end, do banco de dados ao deploy.",
         },
       ],
     },
@@ -152,6 +153,7 @@ export const translations = {
       about: "About",
       projects: "Projects",
       stack: "Stack",
+      process: "Process",
       contact: "Contact",
       cta: "Hire Me",
     },
@@ -196,19 +198,19 @@ export const translations = {
       title: "My journey",
       items: [
         {
-          year: "2022",
-          title: "Started programming — fill in here",
-          description: "Describe your experience here...",
-        },
-        {
           year: "2023",
-          title: "First freelance project — fill in here",
-          description: "Describe your experience here...",
+          title: "The first contact with programming.",
+          description: "I saw a simple system solving math problems in Python and fell in love instantly. I've always been passionate about mathematics, numbers and logic — realizing I could turn that into code was the click that changed everything.",
         },
         {
           year: "2024",
-          title: "Fullstack specialization — fill in here",
-          description: "Describe your experience here...",
+          title: "Starting my degree in Information Systems.",
+          description: "It was my second degree and one of the best decisions I ever made. Seeing technology's constant growth and understanding I could work from anywhere in the world doing something I loved gave me even more certainty about this path.",
+        },
+        {
+          year: "2025",
+          title: "Specialization in Full-Stack development.",
+          description: "Between courses, hands-on projects and a lot of dedication beyond college, I consolidated my knowledge in Full-Stack development — from front-end to back-end, from database to deploy.",
         },
       ],
     },

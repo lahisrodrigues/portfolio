@@ -109,7 +109,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 65% 55% at 50% 48%, rgba(139, 92, 246, 0.09) 0%, transparent 70%)",
+            "radial-gradient(ellipse 65% 55% at 50% 48%, rgba(35, 35, 255, 0.09) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -120,7 +120,7 @@ export default function Hero() {
 
           {/* Badge animado infinito */}
           <motion.span
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-600/40 dark:border-violet-700/60 bg-violet-50 dark:bg-violet-950/40 text-violet-600 dark:text-violet-300 text-xs font-mono tracking-widest uppercase"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/40 dark:border-blue-700/60 bg-blue-50 dark:bg-blue-950/40 text-brand dark:text-blue-300 text-xs font-mono tracking-widest uppercase"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
@@ -133,14 +133,14 @@ export default function Hero() {
             <span>
               {badgeDisplayed}
               {badgeShowCursor && (
-                <span className="inline-block w-[1px] h-[0.8em] bg-violet-600 dark:bg-violet-400 align-middle ml-0.5 animate-pulse" />
+                <span className="inline-block w-[1px] h-[0.8em] bg-brand dark:bg-blue-400 align-middle ml-0.5 animate-pulse" />
               )}
             </span>
           </motion.span>
 
           {/* Título principal — preto no light mode, branco no dark */}
           <motion.h1
-            className="font-mono text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-none text-zinc-950 dark:text-white break-words w-full"
+            className="font-mono text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none text-zinc-950 dark:text-white break-words w-full"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.7 }}
@@ -168,10 +168,10 @@ export default function Hero() {
             <p className="font-mono text-base sm:text-lg md:text-xl text-zinc-700 dark:text-zinc-300">
               {t.subtitle}
             </p>
-            <p className="font-mono text-lg sm:text-2xl md:text-3xl text-zinc-900 dark:text-violet-400 font-semibold min-h-[1.75rem] sm:min-h-[2rem] md:min-h-[2.25rem]">
+            <p className="font-mono text-lg sm:text-2xl md:text-3xl text-zinc-900 dark:text-blue-400 font-semibold min-h-[1.75rem] sm:min-h-[2rem] md:min-h-[2.25rem]">
               {displayed}
               <span
-                className={`inline-block w-[2px] h-[0.85em] bg-zinc-900 dark:bg-violet-400 align-middle ml-0.5 translate-y-[-1px] ${
+                className={`inline-block w-[2px] h-[0.85em] bg-zinc-900 dark:bg-blue-400 align-middle ml-0.5 translate-y-[-1px] ${
                   done ? "animate-pulse" : ""
                 }`}
               />
@@ -197,14 +197,14 @@ export default function Hero() {
           >
             <a
               href="#projetos"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg border border-zinc-900 text-zinc-900 dark:border-violet-500 dark:text-violet-300 font-sans font-semibold hover:bg-zinc-900 hover:text-white dark:hover:bg-violet-950/60 dark:hover:border-violet-400 transition-all duration-300 ease-in-out w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg border border-zinc-900 text-zinc-900 dark:border-blue-500 dark:text-blue-300 font-sans font-semibold hover:bg-zinc-900 hover:text-white dark:hover:bg-blue-950/60 dark:hover:border-blue-400 transition-all duration-300 ease-in-out w-full sm:w-auto"
             >
               <ArrowRight size={18} />
               {t.ctaPrimary}
             </a>
             <a
               href="#contato"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-zinc-900 hover:bg-zinc-800 dark:bg-violet-600 dark:hover:bg-violet-500 text-white font-sans font-semibold transition-all duration-300 ease-in-out w-full sm:w-auto shadow-lg shadow-zinc-900/20 dark:shadow-violet-900/30"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-zinc-900 hover:bg-zinc-800 dark:bg-brand dark:hover:bg-blue-500 text-white font-sans font-semibold transition-all duration-300 ease-in-out w-full sm:w-auto shadow-lg shadow-zinc-900/20 dark:shadow-blue-900/30"
             >
               <Mail size={18} />
               {t.ctaSecondary}
@@ -233,7 +233,7 @@ export default function Hero() {
       {/* Indicador de scroll */}
       <motion.a
         href="#sobre"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-zinc-500 dark:text-zinc-400 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-200"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-zinc-500 dark:text-zinc-400 hover:text-brand dark:hover:text-blue-400 transition-colors duration-200"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
         aria-label="Ir para a próxima seção"
