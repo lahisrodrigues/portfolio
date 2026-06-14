@@ -119,7 +119,7 @@ export default function Projects() {
           className="mb-12 md:mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
           <p className="font-mono text-[#2323FF] dark:text-blue-400 text-xs tracking-widest uppercase mb-3">
@@ -139,7 +139,7 @@ export default function Projects() {
             style={{ top: "5rem", left: "12.5%", right: "12.5%", transformOrigin: "left" }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-50px" }}
             transition={{ duration: 0.8, delay: 0.3 }}
           />
 
@@ -152,7 +152,7 @@ export default function Projects() {
                   key={title}
                   initial={{ opacity: 0, y: 60 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  viewport={{ once: false, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
                   whileHover={{ y: -8, transition: { duration: 0.2 } }}
                   className={`relative flex flex-col p-6 rounded-xl backdrop-blur-sm transition-colors duration-300 ${
@@ -161,7 +161,7 @@ export default function Projects() {
                       : "bg-white/5 border border-white/10 hover:border-blue-400/50"
                   }`}
                 >
-                  <span className="font-mono text-4xl font-bold text-[#2323FF]/40 leading-none select-none mb-1">
+                  <span className={`font-mono text-4xl font-bold text-[#2323FF] leading-none select-none mb-1 ${isLight ? "opacity-80" : "opacity-60"}`}>
                     {num}
                   </span>
 

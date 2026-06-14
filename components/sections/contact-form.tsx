@@ -65,7 +65,7 @@ export default function ContactForm() {
           className="mb-10 md:mb-12 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
           <p className="font-mono text-brand dark:text-blue-400 text-xs tracking-widest uppercase mb-3">
@@ -83,7 +83,7 @@ export default function ContactForm() {
           className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/60 backdrop-blur-md p-6 md:p-8 overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
         >
           <form onSubmit={handleSubmit} className="space-y-5" noValidate>
