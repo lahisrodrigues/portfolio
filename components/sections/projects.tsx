@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { MessageSquare, FileText, Code2, Rocket } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/i18n";
 
@@ -62,10 +63,10 @@ function useCardTypewriter(text: string) {
 function DevCardTitle({ text }: { text: string }) {
   const { displayed, showCursor } = useCardTypewriter(text);
   return (
-    <h3 className="font-mono text-white font-semibold text-lg mb-2 min-h-[1.75rem]">
+    <h3 className="font-mono text-zinc-900 dark:text-white font-semibold text-lg mb-2 min-h-[1.75rem]">
       {displayed}
       {showCursor && (
-        <span className="inline-block w-[1px] h-[0.85em] bg-white align-middle ml-0.5 animate-pulse" />
+        <span className="inline-block w-[1px] h-[0.85em] bg-zinc-900 dark:bg-white align-middle ml-0.5 animate-pulse" />
       )}
     </h3>
   );
@@ -73,8 +74,13 @@ function DevCardTitle({ text }: { text: string }) {
 
 export default function Projects() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
   const { lang } = useLanguage();
   const t = translations[lang].howIWork;
+  const isLight = mounted && resolvedTheme === "light";
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -85,7 +91,7 @@ export default function Projects() {
   return (
     <section
       id="processo"
-      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-zinc-950"
+      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-white dark:bg-zinc-950"
     >
       <video
         ref={videoRef}
@@ -101,7 +107,10 @@ export default function Projects() {
       </video>
 
       <div
-        className="absolute inset-0 bg-black/75 dark:bg-black/80 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: isLight ? "rgba(255,255,255,0.88)" : "rgba(0,0,0,0.80)",
+        }}
         aria-hidden="true"
       />
 
@@ -113,20 +122,20 @@ export default function Projects() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <p className="font-mono text-blue-400 text-xs tracking-widest uppercase mb-3">
+          <p className="font-mono text-[#2323FF] dark:text-blue-400 text-xs tracking-widest uppercase mb-3">
             {t.eyebrow}
           </p>
-          <h2 className="font-mono text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="font-mono text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4">
             {t.title}
           </h2>
-          <p className="font-sans text-base text-zinc-200">
+          <p className="font-sans text-base text-zinc-700 dark:text-zinc-200">
             {t.subtitle}
           </p>
         </motion.div>
 
         <div className="relative">
           <motion.div
-            className="hidden lg:block absolute border-t-2 border-dashed border-blue-400/30 pointer-events-none z-0"
+            className="hidden lg:block absolute border-t-2 border-dashed border-[#2323FF]/30 pointer-events-none z-0"
             style={{ top: "5rem", left: "12.5%", right: "12.5%", transformOrigin: "left" }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -146,24 +155,28 @@ export default function Projects() {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
                   whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                  className="relative flex flex-col p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-blue-400/50 transition-colors duration-300"
+                  className={`relative flex flex-col p-6 rounded-xl backdrop-blur-sm transition-colors duration-300 ${
+                    isLight
+                      ? "bg-white/80 border border-zinc-200 shadow-sm hover:border-[#2323FF]/50"
+                      : "bg-white/5 border border-white/10 hover:border-blue-400/50"
+                  }`}
                 >
-                  <span className="font-mono text-4xl font-bold text-blue-400/30 leading-none select-none mb-1">
+                  <span className="font-mono text-4xl font-bold text-[#2323FF]/40 leading-none select-none mb-1">
                     {num}
                   </span>
 
-                  <div className="w-10 h-10 rounded-lg bg-blue-950/80 flex items-center justify-center mb-4">
-                    <Icon size={20} className="text-blue-400" />
+                  <div className="w-10 h-10 rounded-lg bg-[#2323FF]/10 flex items-center justify-center mb-4">
+                    <Icon size={20} className="text-[#2323FF]" />
                   </div>
 
                   {i === 2 ? (
                     <DevCardTitle text={title} />
                   ) : (
-                    <h3 className="font-mono text-white font-semibold text-lg mb-2">
+                    <h3 className="font-mono text-zinc-900 dark:text-white font-bold text-lg mb-2">
                       {title}
                     </h3>
                   )}
-                  <p className="font-sans text-zinc-200 text-sm leading-relaxed">
+                  <p className="font-sans text-zinc-700 dark:text-zinc-200 text-sm leading-relaxed">
                     {description}
                   </p>
                 </motion.div>
