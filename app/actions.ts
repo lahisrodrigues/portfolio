@@ -16,7 +16,7 @@ export async function sendContactEmail(
   const { name, email, subject, message } = parsed.data;
 
   const { error } = await resend.emails.send({
-    from: "Portfolio <onboarding@resend.dev>",
+    from: "Lais Rodrigues <onboarding@resend.dev>",
     to: process.env.CONTACT_EMAIL!,
     reply_to: email,
     subject: `[Portfolio] ${subject}`,

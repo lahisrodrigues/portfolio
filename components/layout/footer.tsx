@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Briefcase } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/i18n";
 
@@ -37,6 +37,16 @@ export default function Footer() {
           >
             <Linkedin size={16} />
             LinkedIn
+          </a>
+          <a
+            href="https://www.upwork.com/placeholder-lais"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Upwork"
+            className="flex items-center gap-1.5 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out"
+          >
+            <Briefcase size={16} />
+            Upwork
           </a>
         </div>
       </div>

@@ -3,12 +3,14 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, Briefcase } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/i18n";
 
 const icons = [GraduationCap, Briefcase, Briefcase] as const;
 
 export default function Timeline() {
+  const { resolvedTheme } = useTheme();
   const { lang } = useLanguage();
   const t = translations[lang].timeline;
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -70,7 +72,7 @@ export default function Timeline() {
   return (
     <section
       id="trajetoria"
-      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-zinc-950"
+      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-white dark:bg-zinc-950"
     >
       {/* Canvas Matrix rain */}
       <canvas
@@ -81,7 +83,9 @@ export default function Timeline() {
 
       {/* Overlay para legibilidade */}
       <div
-        className="absolute inset-0 bg-zinc-950/60 z-[1] pointer-events-none"
+        className={`absolute inset-0 z-[1] pointer-events-none ${
+          resolvedTheme === "light" ? "bg-white/90" : "bg-zinc-950/60"
+        }`}
         aria-hidden="true"
       />
 
@@ -97,7 +101,7 @@ export default function Timeline() {
           <p className="font-mono text-brand text-xs tracking-widest uppercase mb-3">
             {t.eyebrow}
           </p>
-          <h2 className="font-mono text-3xl md:text-4xl font-bold text-white">
+          <h2 className="font-mono text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">
             {t.title}
           </h2>
         </motion.div>
@@ -144,10 +148,10 @@ export default function Timeline() {
                         <Icon size={14} className="text-brand" />
                       </div>
                     </div>
-                    <h3 className="font-mono text-white font-semibold text-base md:text-lg mb-1.5 break-words">
+                    <h3 className="font-mono text-zinc-900 dark:text-white font-semibold text-base md:text-lg mb-1.5 break-words">
                       {title}
                     </h3>
-                    <p className="font-sans text-sm text-zinc-300 leading-relaxed">
+                    <p className="font-sans text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                       {description}
                     </p>
                   </div>

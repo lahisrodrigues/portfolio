@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Zap, MessageCircle, Target } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/i18n";
 
@@ -20,6 +21,7 @@ const item = {
 
 export default function About() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { resolvedTheme } = useTheme();
   const { lang } = useLanguage();
   const t = translations[lang].whyHireMe;
 
@@ -50,7 +52,13 @@ export default function About() {
 
       {/* Overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/80 to-white/92 dark:from-zinc-950/92 dark:via-zinc-950/80 dark:to-zinc-950/92 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            resolvedTheme === "dark"
+              ? "linear-gradient(to bottom, rgba(9,9,11,0.92), rgba(9,9,11,0.80), rgba(9,9,11,0.92))"
+              : "rgba(255,255,255,0.90)",
+        }}
         aria-hidden="true"
       />
 
@@ -67,8 +75,8 @@ export default function About() {
             {t.eyebrow}
           </p>
           <h2
-            className="font-mono text-3xl md:text-4xl font-bold text-white dark:text-white mb-4"
-            style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}
+            className="font-mono text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4"
+            style={{ textShadow: resolvedTheme === "dark" ? "0 2px 12px rgba(0,0,0,0.8)" : "none" }}
           >
             {t.title}
           </h2>
@@ -87,15 +95,15 @@ export default function About() {
               <motion.div
                 key={title}
                 variants={item}
-                className="p-6 rounded-xl bg-zinc-900/80 backdrop-blur-md border border-zinc-700 hover:border-blue-500 transition-colors duration-300 w-full"
+                className="p-6 rounded-xl bg-white shadow-sm dark:shadow-none dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 w-full"
               >
-                <div className="w-10 h-10 rounded-lg bg-blue-500/10 dark:bg-blue-500/10 flex items-center justify-center mb-4">
-                  <Icon size={20} className="text-blue-400 dark:text-blue-400" />
+                <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
+                  <Icon size={20} className="text-blue-400" />
                 </div>
-                <h3 className="font-mono text-white font-bold text-lg mb-2" style={{ textShadow: 'none' }}>
+                <h3 className="font-mono text-zinc-900 dark:text-white font-bold text-lg mb-2">
                   {title}
                 </h3>
-                <p className="font-sans text-zinc-300 text-sm leading-relaxed">
+                <p className="font-sans text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
                   {description}
                 </p>
               </motion.div>
