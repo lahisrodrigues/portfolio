@@ -74,7 +74,7 @@ export default function StackAndProjects() {
           className="text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
           <p className="font-mono text-sm text-zinc-500 mb-2">
@@ -109,7 +109,7 @@ export default function StackAndProjects() {
           className="mb-10 md:mb-12 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
           <p className="font-mono text-brand dark:text-blue-400 text-xs tracking-widest uppercase mb-3">
@@ -130,7 +130,7 @@ export default function StackAndProjects() {
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: false, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
                 whileHover={{
                   y: -6,

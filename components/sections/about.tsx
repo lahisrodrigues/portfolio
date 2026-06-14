@@ -71,7 +71,7 @@ export default function About() {
           className="mb-12 md:mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
           <p className="font-mono text-brand dark:text-blue-400 text-xs tracking-widest uppercase mb-3">
@@ -90,7 +90,7 @@ export default function About() {
           variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-50px" }}
         >
           {t.cards.map(({ title, description }, i) => {
             const Icon = cardIcons[i];

@@ -44,6 +44,11 @@ export const metadata: Metadata = {
       "APIs, dashboards e integrações entregues com prazo e qualidade. Disponível para novos projetos.",
     type: "website",
     locale: "pt_BR",
+    images: [{ url: "https://laisrodriguesdev.vercel.app/og-image.png", width: 1200, height: 627, alt: "Lais Rodrigues | Desenvolvedora Full-Stack" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["https://laisrodriguesdev.vercel.app/og-image.png"],
   },
 };
 
