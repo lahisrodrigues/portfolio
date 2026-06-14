@@ -41,7 +41,7 @@ const badgeStyles = [
 
 function TechCard({ name, symbol }: { name: string; symbol: string }) {
   return (
-    <div className="flex items-center gap-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-6 py-4 mx-4 shrink-0">
+    <div className="flex items-center gap-3 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-lg px-6 py-4 mx-4 shrink-0">
       <span className="font-mono text-base text-brand dark:text-blue-400 w-7 text-center leading-none select-none">
         {symbol}
       </span>
@@ -57,7 +57,7 @@ export default function StackAndProjects() {
   const tProjects = translations[lang].upcomingProjects;
 
   return (
-    <section id="stack" className="relative py-20 md:py-32 overflow-hidden bg-zinc-100 dark:bg-zinc-900 dot-grid">
+    <section id="stack" className="relative py-20 md:py-32 overflow-hidden bg-white dark:bg-zinc-950 dot-grid">
       {/* Gradiente radial central suave */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -88,8 +88,8 @@ export default function StackAndProjects() {
 
       {/* Carrossel — linha única, 40s */}
       <div className="relative z-10 mb-16 md:mb-20">
-        <div className="absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-zinc-100 dark:from-zinc-900 to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-zinc-100 dark:from-zinc-900 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-10 sm:w-24 md:w-40 bg-gradient-to-r from-white dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-10 sm:w-24 md:w-40 bg-gradient-to-l from-white dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
 
         <div className="flex overflow-hidden">
           <div
@@ -123,7 +123,7 @@ export default function StackAndProjects() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {tProjects.items.map(({ title, description, badge }, i) => {
             const isClickable = i === 0;
             const card = (
@@ -137,7 +137,7 @@ export default function StackAndProjects() {
                   scale: isClickable ? 1.02 : 1,
                   transition: { duration: 0.2 },
                 }}
-                className={`relative flex flex-col p-6 rounded-xl border bg-zinc-50 dark:bg-zinc-900/50 backdrop-blur-sm transition-all duration-300 ${
+                className={`relative flex flex-col p-6 rounded-xl border bg-white dark:bg-zinc-900/50 backdrop-blur-sm transition-all duration-300 ${
                   isClickable
                     ? "border-zinc-200 dark:border-zinc-800 hover:border-brand dark:hover:border-brand"
                     : "border-zinc-200 dark:border-zinc-800 hover:border-blue-500 dark:hover:border-blue-700"

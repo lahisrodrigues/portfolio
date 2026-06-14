@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, Briefcase } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -10,10 +10,16 @@ import { translations } from "@/lib/i18n";
 const icons = [GraduationCap, Briefcase, Briefcase] as const;
 
 export default function Timeline() {
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
   const { lang } = useLanguage();
   const t = translations[lang].timeline;
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isLight = mounted && resolvedTheme === "light";
+  const isLightRef = useRef(false);
+
+  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => { isLightRef.current = isLight; }, [isLight]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -40,14 +46,17 @@ export default function Timeline() {
 
     function draw() {
       if (!ctx || !canvas) return;
+      const light = isLightRef.current;
 
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = light ? "rgba(255, 255, 255, 0.03)" : "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
-        const opacity = 0.1 + Math.random() * 0.7;
+        const opacity = light
+          ? 0.35 + Math.random() * 0.55
+          : 0.1 + Math.random() * 0.7;
         ctx.fillStyle = `rgba(35, 35, 255, ${opacity.toFixed(2)})`;
         const char = Math.random() > 0.5 ? "1" : "0";
         ctx.fillText(char, i * fontSize, drops[i] * fontSize);
@@ -84,7 +93,7 @@ export default function Timeline() {
       {/* Overlay para legibilidade */}
       <div
         className={`absolute inset-0 z-[1] pointer-events-none ${
-          resolvedTheme === "light" ? "bg-white/90" : "bg-zinc-950/60"
+          isLight ? "bg-white/75" : "bg-zinc-950/60"
         }`}
         aria-hidden="true"
       />
@@ -128,7 +137,7 @@ export default function Timeline() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
                   {/* Dot */}
-                  <div className="absolute left-3.5 md:left-1/2 top-2.5 w-3.5 h-3.5 rounded-full bg-blue-500 border-2 border-zinc-950 md:-translate-x-[7px] z-10 shrink-0" />
+                  <div className="absolute left-3.5 md:left-1/2 top-2.5 w-3.5 h-3.5 rounded-full bg-[#2323FF] border-2 border-white dark:border-zinc-950 md:-translate-x-[7px] z-10 shrink-0" />
 
                   {/* Conteúdo */}
                   <div
@@ -141,11 +150,11 @@ export default function Timeline() {
                         isEven ? "md:flex-row-reverse" : ""
                       }`}
                     >
-                      <span className="font-mono text-xs font-bold tracking-widest text-brand">
+                      <span className="font-mono text-xs font-bold tracking-widest text-[#2323FF]">
                         {year}
                       </span>
-                      <div className="w-7 h-7 rounded-lg bg-blue-950 flex items-center justify-center shrink-0">
-                        <Icon size={14} className="text-brand" />
+                      <div className="w-7 h-7 rounded-lg bg-[#2323FF]/10 border border-[#2323FF]/30 flex items-center justify-center shrink-0">
+                        <Icon size={14} className="text-[#2323FF]" />
                       </div>
                     </div>
                     <h3 className="font-mono text-zinc-900 dark:text-white font-semibold text-base md:text-lg mb-1.5 break-words">

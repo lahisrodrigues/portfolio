@@ -44,7 +44,7 @@ export default function ContactForm() {
   return (
     <section
       id="contato"
-      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-zinc-100 dark:bg-zinc-900"
+      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-white dark:bg-zinc-950"
     >
       {/* Imagem de fundo — lazy load pois está abaixo da dobra */}
       <div

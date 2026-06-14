@@ -12,6 +12,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const { setTheme } = useTheme();
   const { lang, setLang } = useLanguage();
   const langRef = useRef<HTMLDivElement>(null);
@@ -29,6 +30,23 @@ export default function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = ["sobre", "stack", "projetos", "processo", "contato"];
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection("#" + entry.target.id);
+        });
+      },
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -65,8 +83,11 @@ export default function Navbar() {
           <a
             href="#inicio"
             onClick={close}
-            className="text-zinc-900 dark:text-white font-bold text-base md:text-lg hover:text-brand dark:hover:text-blue-400 transition-all duration-300 ease-in-out z-50 relative"
+            className="flex items-center gap-2 text-zinc-900 dark:text-white font-bold text-base md:text-lg hover:text-brand dark:hover:text-blue-400 transition-all duration-300 ease-in-out z-50 relative"
           >
+            <span className="font-mono font-bold text-sm bg-[#2323FF] text-white px-2 py-1 rounded">
+              LR
+            </span>
             Lais Rodrigues
           </a>
 
@@ -76,7 +97,11 @@ export default function Navbar() {
               <a
                 key={href}
                 href={href}
-                className="text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out px-2"
+                className={`text-sm transition-all duration-200 ease-in-out px-2 pb-0.5 ${
+                  activeSection === href
+                    ? "border-b-2 border-[#2323FF] text-[#2323FF]"
+                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+                }`}
               >
                 {label}
               </a>

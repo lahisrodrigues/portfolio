@@ -99,7 +99,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-zinc-50 dark:bg-zinc-950"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-zinc-950"
     >
       {/* Grid tech de fundo */}
       <div className="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
@@ -140,7 +140,7 @@ export default function Hero() {
 
           {/* Título principal — preto no light mode, branco no dark */}
           <motion.h1
-            className="font-mono text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none text-zinc-950 dark:text-white break-words w-full"
+            className="font-mono text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none text-zinc-950 dark:text-white break-words w-full"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.7 }}
