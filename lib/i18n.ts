@@ -2,6 +2,7 @@ export const translations = {
   pt: {
     navbar: {
       about: "Sobre",
+      timeline: "Trajetória",
       projects: "Projetos",
       stack: "Stack",
       process: "Processo",
@@ -151,6 +152,7 @@ export const translations = {
   en: {
     navbar: {
       about: "About",
+      timeline: "Journey",
       projects: "Projects",
       stack: "Stack",
       process: "Process",

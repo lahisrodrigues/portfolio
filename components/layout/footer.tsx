@@ -10,7 +10,7 @@ export default function Footer() {
   const t = translations[lang].footer;
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 py-8 px-4 md:px-8">
+    <footer className="border-t border-sky-100 dark:border-[#1e3a5f] bg-sky-50 dark:bg-[#060b18] py-8 px-4 md:px-8">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-700 dark:text-zinc-300">
         <p className="text-center sm:text-left">
           © {year} Lais Rodrigues —{" "}

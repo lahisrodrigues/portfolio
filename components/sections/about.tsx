@@ -38,7 +38,7 @@ export default function About() {
   return (
     <section
       id="sobre"
-      className="relative min-h-screen flex items-center py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-zinc-100 dark:bg-zinc-900"
+      className="relative min-h-screen flex items-center py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#e0f2fe] dark:bg-[#0d1b3e]"
     >
       {/* Vídeo */}
       <video
@@ -59,8 +59,8 @@ export default function About() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background: isLight
-            ? "rgba(255,255,255,0.90)"
-            : "linear-gradient(to bottom, rgba(9,9,11,0.92), rgba(9,9,11,0.80), rgba(9,9,11,0.92))",
+            ? "linear-gradient(to bottom, rgba(186,225,255,0.80), rgba(200,238,255,0.75), rgba(186,225,255,0.80))"
+            : "linear-gradient(to bottom, rgba(10,15,30,0.92), rgba(13,27,62,0.82), rgba(10,15,30,0.92))",
         }}
         aria-hidden="true"
       />
@@ -98,7 +98,7 @@ export default function About() {
               <motion.div
                 key={title}
                 variants={item}
-                className="p-6 rounded-xl bg-white shadow-sm dark:shadow-none dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-700 hover:border-blue-500 dark:hover:border-blue-500 transition-colors duration-300 w-full"
+                className="p-6 rounded-xl bg-white shadow-sm dark:shadow-none dark:bg-[#0a0f1e]/80 backdrop-blur-md border border-sky-100 dark:border-[#1e3a5f] hover:border-teal-400 dark:hover:border-blue-400 transition-colors duration-300 w-full"
               >
                 <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
                   <Icon size={20} className="text-blue-400" />

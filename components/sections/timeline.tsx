@@ -48,7 +48,7 @@ export default function Timeline() {
       if (!ctx || !canvas) return;
       const light = isLightRef.current;
 
-      ctx.fillStyle = light ? "rgba(255, 255, 255, 0.03)" : "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = light ? "rgba(240, 249, 255, 0.04)" : "rgba(10, 15, 30, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.font = `${fontSize}px monospace`;
@@ -81,7 +81,7 @@ export default function Timeline() {
   return (
     <section
       id="trajetoria"
-      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-white dark:bg-zinc-950"
+      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#e0f2fe] dark:bg-[#0a0f1e]"
     >
       {/* Canvas Matrix rain */}
       <canvas
@@ -93,7 +93,7 @@ export default function Timeline() {
       {/* Overlay para legibilidade */}
       <div
         className={`absolute inset-0 z-[1] pointer-events-none ${
-          isLight ? "bg-white/75" : "bg-zinc-950/60"
+          isLight ? "bg-sky-50/75" : "bg-[#0a0f1e]/60"
         }`}
         aria-hidden="true"
       />
@@ -123,7 +123,7 @@ export default function Timeline() {
           />
 
           <div className="space-y-10 md:space-y-14">
-            {t.items.map(({ year, title, description }, i) => {
+            {t.items.map(({ year, title }, i) => {
               const Icon = icons[i] ?? Briefcase;
               const isEven = i % 2 === 0;
 
@@ -137,7 +137,7 @@ export default function Timeline() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
                   {/* Dot */}
-                  <div className="absolute left-3.5 md:left-1/2 top-2.5 w-3.5 h-3.5 rounded-full bg-[#2323FF] border-2 border-white dark:border-zinc-950 md:-translate-x-[7px] z-10 shrink-0" />
+                  <div className="absolute left-3.5 md:left-1/2 top-2.5 w-3.5 h-3.5 rounded-full bg-[#2323FF] border-2 border-white dark:border-[#0a0f1e] md:-translate-x-[7px] z-10 shrink-0" />
 
                   {/* Conteúdo */}
                   <div
@@ -157,12 +157,9 @@ export default function Timeline() {
                         <Icon size={14} className="text-[#2323FF]" />
                       </div>
                     </div>
-                    <h3 className="font-mono text-zinc-900 dark:text-white font-semibold text-base md:text-lg mb-1.5 break-words">
+                    <h3 className="font-mono text-zinc-900 dark:text-white font-semibold text-base md:text-lg break-words">
                       {title}
                     </h3>
-                    <p className="font-sans text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                      {description}
-                    </p>
                   </div>
 
                   {/* Lado vazio — desktop */}

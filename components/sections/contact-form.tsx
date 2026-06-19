@@ -39,12 +39,12 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full min-w-0 max-w-full px-4 py-3 rounded-lg bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-blue-500 transition-colors duration-200 disabled:opacity-50 font-sans text-sm md:text-base";
+    "w-full min-w-0 max-w-full px-4 py-3 rounded-lg bg-white dark:bg-[#0d1b3e]/60 border border-sky-200 dark:border-[#1e3a5f] text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-teal-400 dark:focus:border-blue-400 transition-colors duration-200 disabled:opacity-50 font-sans text-sm md:text-base";
 
   return (
     <section
       id="contato"
-      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-white dark:bg-zinc-950"
+      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#e0f2fe] dark:bg-[#0a0f1e]"
     >
       {/* Imagem de fundo — lazy load pois está abaixo da dobra */}
       <div
@@ -55,7 +55,7 @@ export default function ContactForm() {
 
       {/* Overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-zinc-50/[0.88] via-zinc-50/70 to-zinc-50/[0.88] dark:from-zinc-950/90 dark:via-zinc-950/75 dark:to-zinc-950/90 pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-[#e0f2fe]/[0.88] via-[#e0f2fe]/70 to-[#e0f2fe]/[0.88] dark:from-[#0a0f1e]/90 dark:via-[#0a0f1e]/75 dark:to-[#0a0f1e]/90 pointer-events-none"
         aria-hidden="true"
       />
 
@@ -80,7 +80,7 @@ export default function ContactForm() {
         </motion.div>
 
         <motion.div
-          className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/60 backdrop-blur-md p-6 md:p-8 overflow-hidden"
+          className="rounded-2xl border border-sky-100 dark:border-[#1e3a5f] bg-white/90 dark:bg-[#0a0f1e]/80 backdrop-blur-md p-6 md:p-8 overflow-hidden"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-50px" }}
@@ -185,7 +185,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand hover:bg-blue-500 disabled:bg-blue-400 dark:disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-sans font-semibold rounded-lg transition-colors duration-200"
+              className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#3b82f6] hover:bg-blue-400 disabled:bg-blue-300 dark:disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-sans font-semibold rounded-lg transition-colors duration-200"
             >
               {isPending ? (
                 <>

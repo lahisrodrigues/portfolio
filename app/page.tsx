@@ -15,8 +15,8 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <StackAndProjects />
         <Timeline />
+        <StackAndProjects />
         <Projects />
         <ContactForm />
       </main>

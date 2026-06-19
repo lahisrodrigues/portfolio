@@ -20,6 +20,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t.about, href: "#sobre" },
+    { label: t.timeline, href: "#trajetoria" },
     { label: t.stack, href: "#stack" },
     { label: t.projects, href: "#projetos" },
     { label: t.process, href: "#processo" },
@@ -33,7 +34,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const ids = ["sobre", "stack", "projetos", "processo", "contato"];
+    const ids = ["sobre", "trajetoria", "stack", "projetos", "processo", "contato"];
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[];
@@ -74,7 +75,7 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled || isOpen
-            ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800"
+            ? "bg-white/90 dark:bg-[#0a0f1e]/90 backdrop-blur-md border-b border-sky-100 dark:border-[#1e3a5f]"
             : "bg-transparent"
         }`}
       >
@@ -158,7 +159,7 @@ export default function Navbar() {
 
             <a
               href="#contato"
-              className="px-4 py-2 text-sm bg-brand hover:bg-blue-500 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
+              className="px-4 py-2 text-sm bg-[#3b82f6] hover:bg-blue-400 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
             >
               {t.cta}
             </a>
@@ -209,7 +210,7 @@ export default function Navbar() {
               aria-hidden="true"
             />
             <motion.div
-              className="absolute top-16 left-0 right-0 bg-white/95 dark:bg-zinc-950/95 border-b border-zinc-200 dark:border-zinc-800 px-4 pb-6 pt-2"
+              className="absolute top-16 left-0 right-0 bg-white/95 dark:bg-[#0a0f1e]/95 border-b border-sky-100 dark:border-[#1e3a5f] px-4 pb-6 pt-2"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -247,7 +248,7 @@ export default function Navbar() {
                 <a
                   href="#contato"
                   onClick={close}
-                  className="mt-2 py-3.5 text-center bg-brand hover:bg-blue-500 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
+                  className="mt-2 py-3.5 text-center bg-[#3b82f6] hover:bg-blue-400 text-white font-semibold rounded-lg transition-all duration-300 ease-in-out"
                 >
                   {t.cta}
                 </a>

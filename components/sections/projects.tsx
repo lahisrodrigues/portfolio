@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { MessageSquare, FileText, Code2, Rocket } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -73,43 +73,71 @@ function DevCardTitle({ text }: { text: string }) {
 }
 
 export default function Projects() {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isLightRef = useRef(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
   const { lang } = useLanguage();
   const t = translations[lang].howIWork;
+
   const isLight = mounted && resolvedTheme === "light";
 
   useEffect(() => { setMounted(true); }, []);
+  useEffect(() => { isLightRef.current = isLight; }, [isLight]);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    let animId: number;
+    const fontSize = 14;
+    let drops: number[] = [];
+    let speeds: number[] = [];
+
+    function resize() {
+      if (!canvas) return;
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      const cols = Math.floor(canvas.width / fontSize);
+      drops = Array.from({ length: cols }, () => Math.random() * -50);
+      speeds = Array.from({ length: cols }, () => 0.4 + Math.random() * 0.8);
     }
+    resize();
+    window.addEventListener("resize", resize);
+
+    function draw() {
+      if (!ctx || !canvas) return;
+      const light = isLightRef.current;
+      ctx.fillStyle = light ? "rgba(224,242,254,0.04)" : "rgba(10,15,30,0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `${fontSize}px monospace`;
+      for (let i = 0; i < drops.length; i++) {
+        const opacity = light ? 0.35 + Math.random() * 0.55 : 0.1 + Math.random() * 0.7;
+        ctx.fillStyle = `rgba(35,35,255,${opacity.toFixed(2)})`;
+        ctx.fillText(Math.random() > 0.5 ? "1" : "0", i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i] += speeds[i];
+      }
+      animId = requestAnimationFrame(draw);
+    }
+    draw();
+    return () => { cancelAnimationFrame(animId); window.removeEventListener("resize", resize); };
   }, []);
 
   return (
     <section
       id="processo"
-      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-white dark:bg-zinc-950"
+      className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#e0f2fe] dark:bg-[#0a0f1e]"
     >
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="none"
-        aria-hidden="true"
-      >
-        <source src="/process-bg.mp4" type="video/mp4" />
-      </video>
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0" aria-hidden="true" />
 
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          background: isLight ? "rgba(255,255,255,0.88)" : "rgba(0,0,0,0.80)",
+          background: isLight
+            ? "rgba(224,242,254,0.78)"
+            : "rgba(10,15,30,0.62)",
         }}
         aria-hidden="true"
       />
@@ -155,13 +183,9 @@ export default function Projects() {
                   viewport={{ once: false, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
                   whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                  className={`relative flex flex-col p-6 rounded-xl backdrop-blur-sm transition-colors duration-300 ${
-                    isLight
-                      ? "bg-white/80 border border-zinc-200 shadow-sm hover:border-[#2323FF]/50"
-                      : "bg-white/5 border border-white/10 hover:border-blue-400/50"
-                  }`}
+                  className="relative flex flex-col p-6 rounded-xl backdrop-blur-sm transition-colors duration-300 bg-white/90 dark:bg-[#0d1b3e]/60 border border-sky-100 dark:border-[#1e3a5f] shadow-sm dark:shadow-none hover:border-teal-400 dark:hover:border-blue-400/60"
                 >
-                  <span className={`font-mono text-4xl font-bold text-[#2323FF] leading-none select-none mb-1 ${isLight ? "opacity-80" : "opacity-60"}`}>
+                  <span className="font-mono text-4xl font-bold text-[#2323FF] leading-none select-none mb-1 opacity-80 dark:opacity-60">
                     {num}
                   </span>
 
