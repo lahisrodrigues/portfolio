@@ -12,7 +12,7 @@ export const translations = {
     hero: {
       badge: "Disponível para novos projetos",
       codeComment: "// disponível para novos projetos · Brasil · remoto",
-      subtitle: "Desenvolvedora Full-Stack",
+      subtitle: "Desenvolvedora Front-end",
       typewriter: "com foco em Landing Pages de alta conversão",
       paragraph:
         "Sites e sistemas que convertem. Entrego com prazo, código limpo e comunicação direta — sem enrolação.",
@@ -61,8 +61,8 @@ export const translations = {
         },
         {
           year: "2025",
-          title: "Especialização em desenvolvimento Full-Stack.",
-          description: "Entre cursos, projetos práticos e muita dedicação além da faculdade, consolidei meu conhecimento em desenvolvimento Full-Stack — do front-end ao back-end, do banco de dados ao deploy.",
+          title: "Especialização em desenvolvimento Front-end.",
+          description: "Entre cursos, projetos práticos e muita dedicação além da faculdade, consolidei meu conhecimento em desenvolvimento Front-end — de landing pages de alta conversão a interfaces web modernas, responsivas e performáticas.",
         },
       ],
     },
@@ -162,7 +162,7 @@ export const translations = {
     hero: {
       badge: "Available for new projects",
       codeComment: "// available for new projects · Brazil · remote",
-      subtitle: "Full-Stack Developer",
+      subtitle: "Front-end Developer",
       typewriter: "focused on high-converting Landing Pages",
       paragraph:
         "Sites and systems that convert. Delivered on time, with clean code and direct communication — no fluff.",
@@ -211,8 +211,8 @@ export const translations = {
         },
         {
           year: "2025",
-          title: "Specialization in Full-Stack development.",
-          description: "Between courses, hands-on projects and a lot of dedication beyond college, I consolidated my knowledge in Full-Stack development — from front-end to back-end, from database to deploy.",
+          title: "Specialization in Front-end development.",
+          description: "Between courses, hands-on projects and a lot of dedication beyond college, I consolidated my knowledge in Front-end development — from high-converting landing pages to modern, responsive and performant web interfaces.",
         },
       ],
     },

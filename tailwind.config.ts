@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: '#2323FF',
+        brand: '#3b82f6',
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],

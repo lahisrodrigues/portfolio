@@ -46,12 +46,18 @@ export default function ContactForm() {
       id="contato"
       className="relative py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#e0f2fe] dark:bg-[#0a0f1e]"
     >
-      {/* Imagem de fundo — lazy load pois está abaixo da dobra */}
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: "url('/contact-bg.jpg')" }}
+      {/* Vídeo de fundo */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="none"
+        className="absolute inset-0 w-full h-full object-cover"
         aria-hidden="true"
-      />
+      >
+        <source src="/about-bg.mp4" type="video/mp4" />
+      </video>
 
       {/* Overlay */}
       <div

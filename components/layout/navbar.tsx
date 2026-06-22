@@ -86,7 +86,7 @@ export default function Navbar() {
             onClick={close}
             className="flex items-center gap-2 text-zinc-900 dark:text-white font-bold text-base md:text-lg hover:text-brand dark:hover:text-blue-400 transition-all duration-300 ease-in-out z-50 relative"
           >
-            <span className="font-mono font-bold text-sm bg-[#2323FF] text-white px-2 py-1 rounded">
+            <span className="font-mono font-bold text-sm bg-[#3b82f6] text-white px-2 py-1 rounded">
               LR
             </span>
             Lais Rodrigues
@@ -100,7 +100,7 @@ export default function Navbar() {
                 href={href}
                 className={`text-sm transition-all duration-200 ease-in-out px-2 pb-0.5 ${
                   activeSection === href
-                    ? "border-b-2 border-[#2323FF] text-[#2323FF]"
+                    ? "border-b-2 border-[#3b82f6] text-[#3b82f6]"
                     : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
                 }`}
               >

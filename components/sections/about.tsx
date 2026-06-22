@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Zap, MessageCircle, Target } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -20,7 +20,6 @@ const item = {
 };
 
 export default function About() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
   const { lang } = useLanguage();
@@ -29,38 +28,27 @@ export default function About() {
 
   useEffect(() => { setMounted(true); }, []);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    }
-  }, []);
-
   return (
     <section
       id="sobre"
       className="relative min-h-screen flex items-center py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#e0f2fe] dark:bg-[#0d1b3e]"
     >
-      {/* Vídeo */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="none"
+      {/* GIF de fundo — opacidade baixa para não competir com o conteúdo */}
+      <img
+        src="/hero-illustration.gif"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+        style={{ opacity: isLight ? 0.40 : 0.28 }}
         aria-hidden="true"
-      >
-        <source src="/about-bg.mp4" type="video/mp4" />
-      </video>
+      />
 
       {/* Overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: isLight
-            ? "linear-gradient(to bottom, rgba(186,225,255,0.80), rgba(200,238,255,0.75), rgba(186,225,255,0.80))"
-            : "linear-gradient(to bottom, rgba(10,15,30,0.92), rgba(13,27,62,0.82), rgba(10,15,30,0.92))",
+            ? "linear-gradient(to bottom, rgba(186,225,255,0.62), rgba(200,238,255,0.55), rgba(186,225,255,0.62))"
+            : "linear-gradient(to bottom, rgba(10,15,30,0.72), rgba(13,27,62,0.62), rgba(10,15,30,0.72))",
         }}
         aria-hidden="true"
       />
@@ -98,17 +86,39 @@ export default function About() {
               <motion.div
                 key={title}
                 variants={item}
-                className="p-6 rounded-xl bg-white shadow-sm dark:shadow-none dark:bg-[#0a0f1e]/80 backdrop-blur-md border border-sky-100 dark:border-[#1e3a5f] hover:border-teal-400 dark:hover:border-blue-400 transition-colors duration-300 w-full"
+                className="overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0a0a0f] hover:border-[#3b82f6]/50 transition-colors duration-300 w-full shadow-sm dark:shadow-none"
               >
-                <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
-                  <Icon size={20} className="text-blue-400" />
+                {/* Header terminal */}
+                <div className="flex items-center justify-between px-3 py-2 bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+                  <div className="flex gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-red-500/60" />
+                    <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
+                    <div className="w-2 h-2 rounded-full bg-green-500/60" />
+                  </div>
+                  <span className="font-mono text-[10px] text-zinc-600">bash — lais@dev</span>
+                  <span className="font-mono text-[10px] text-[#3b82f6]/70">0{i + 1}</span>
                 </div>
-                <h3 className="font-mono text-zinc-900 dark:text-white font-bold text-lg mb-2">
-                  {title}
-                </h3>
-                <p className="font-sans text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
-                  {description}
-                </p>
+                {/* Corpo terminal */}
+                <div className="p-4 font-mono text-xs space-y-2">
+                  <div className="flex items-center gap-1.5 text-zinc-500">
+                    <span className="text-green-400">❯</span>
+                    <span className="text-[#3b82f6]">./motivo</span>
+                    <span className="text-yellow-300">0{i + 1}</span>
+                    <span className="text-zinc-600">--exec</span>
+                  </div>
+                  <div className="flex items-center gap-2 py-0.5">
+                    <Icon size={14} className="text-[#3b82f6] shrink-0" />
+                    <span className="font-mono text-zinc-900 dark:text-white font-bold text-sm">{title}</span>
+                  </div>
+                  <div className="pl-4 border-l border-zinc-200 dark:border-zinc-800 text-zinc-500 leading-relaxed text-[11px]">
+                    {description}
+                  </div>
+                  <div className="flex items-center gap-1.5 text-green-400 pt-1 text-[10px]">
+                    <span>✓</span>
+                    <span>concluído</span>
+                    <span className="text-zinc-700 ml-1">exit 0</span>
+                  </div>
+                </div>
               </motion.div>
             );
           })}
