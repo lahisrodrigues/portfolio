@@ -34,6 +34,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    document.title =
+      lang === "pt"
+        ? "Lais Rodrigues | Desenvolvedora Front-end"
+        : "Lais Rodrigues | Front-end Developer";
+  }, [lang]);
+
+  useEffect(() => {
     const ids = ["sobre", "trajetoria", "stack", "projetos", "processo", "contato"];
     const sections = ids
       .map((id) => document.getElementById(id))
@@ -182,6 +189,23 @@ export default function Navbar() {
               <Moon size={18} />
             </button>
 
+            {/* Language toggle inline no mobile */}
+            <div className="flex items-center rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-700 text-xs font-mono">
+              {(["pt", "en"] as Lang[]).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  className={`px-2 py-1 transition-all duration-200 ${
+                    lang === l
+                      ? "bg-[#3b82f6] text-white"
+                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+                  }`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
+
             <button
               className="relative z-50 p-2 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-all duration-300 ease-in-out"
               onClick={() => setIsOpen((v) => !v)}
@@ -227,23 +251,6 @@ export default function Navbar() {
                     {label}
                   </a>
                 ))}
-
-                {/* Language toggle mobile */}
-                <div className="flex gap-2 pt-4 pb-2">
-                  {(["pt", "en"] as Lang[]).map((l) => (
-                    <button
-                      key={l}
-                      onClick={() => setLang(l)}
-                      className={`flex-1 py-2 rounded-lg text-sm font-mono font-medium transition-all duration-300 ease-in-out ${
-                        lang === l
-                          ? "bg-brand text-white"
-                          : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
-                      }`}
-                    >
-                      {l.toUpperCase()}
-                    </button>
-                  ))}
-                </div>
 
                 <a
                   href="#contato"

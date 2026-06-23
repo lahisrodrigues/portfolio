@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Zap, MessageCircle, Target } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -34,10 +35,12 @@ export default function About() {
       className="relative min-h-screen flex items-center py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#e0f2fe] dark:bg-[#0d1b3e]"
     >
       {/* GIF de fundo — opacidade baixa para não competir com o conteúdo */}
-      <img
+      <Image
         src="/hero-illustration.gif"
         alt=""
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+        fill
+        unoptimized
+        className="object-cover pointer-events-none select-none"
         style={{ opacity: isLight ? 0.40 : 0.28 }}
         aria-hidden="true"
       />

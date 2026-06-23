@@ -23,9 +23,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Lais Rodrigues | Desenvolvedora Full-Stack",
+  title: "Lais Rodrigues | Desenvolvedora Front-end",
   description:
-    "Desenvolvedora Full-Stack especializada em Next.js, TypeScript e Python. APIs, dashboards e integrações entregues com prazo, qualidade e comunicação clara. Disponível para projetos sob demanda e contratos.",
+    "Desenvolvedora Front-end especializada em Next.js, TypeScript e React. Sites e sistemas que convertem, entregues com prazo, código limpo e comunicação direta.",
   keywords: [
     "desenvolvedora fullstack",
     "Next.js",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Lais Rodrigues" }],
   openGraph: {
-    title: "Lais Rodrigues | Desenvolvedora Full-Stack",
+    title: "Lais Rodrigues | Desenvolvedora Front-end",
     description:
-      "APIs, dashboards e integrações entregues com prazo e qualidade. Disponível para novos projetos.",
+      "Sites e sistemas que convertem. Entregues com prazo, código limpo e comunicação direta.",
     type: "website",
     locale: "pt_BR",
     images: [{ url: "https://laisrodriguesdev.vercel.app/og-image.png", width: 1200, height: 627, alt: "Lais Rodrigues | Desenvolvedora Full-Stack" }],

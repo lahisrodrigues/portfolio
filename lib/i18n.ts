@@ -23,6 +23,7 @@ export const translations = {
         "💬 Comunicação diária",
         "✅ Revisões inclusas",
       ],
+      shapes: ["Esfera", "Cubo", "Pirâmide", "Torus", "Galáxia", "Onda"],
     },
     whyHireMe: {
       eyebrow: "Por que me contratar",
@@ -98,6 +99,8 @@ export const translations = {
       eyebrow: "Processo",
       title: "Como trabalho",
       subtitle: "Do briefing ao deploy, sem surpresas.",
+      step: "etapa",
+      statusLabels: ["Descoberta", "Proposta", "Dev", "Entrega"],
       steps: [
         {
           title: "Briefing",
@@ -173,6 +176,7 @@ export const translations = {
         "💬 Daily communication",
         "✅ Revisions included",
       ],
+      shapes: ["Sphere", "Cube", "Pyramid", "Torus", "Galaxy", "Wave"],
     },
     whyHireMe: {
       eyebrow: "Why hire me",
@@ -248,6 +252,8 @@ export const translations = {
       eyebrow: "Process",
       title: "How I work",
       subtitle: "From briefing to deploy, no surprises.",
+      step: "step",
+      statusLabels: ["Discovery", "Proposal", "Dev", "Delivery"],
       steps: [
         {
           title: "Briefing",

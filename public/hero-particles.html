@@ -521,10 +521,15 @@
         if (progress >= 100) {
           setTimeout(() => {
             loadingScreen.style.opacity = '0';
-            setTimeout(() => { loadingScreen.style.display = 'none'; }, 600);
+            setTimeout(() => {
+              loadingScreen.style.display = 'none';
+              window.parent.postMessage({ type: 'heroReady' }, '*');
+            }, 600);
           }, 200);
         }
       }
+
+      const isDesktop = window.innerWidth >= 768;
 
       clock = new THREE.Clock();
       noise3D = createNoise3D(() => Math.random());
@@ -554,6 +559,12 @@
       controls.autoRotate = true;
       controls.autoRotateSpeed = 0.3;
       up(5);
+
+      if (isDesktop) {
+        // Câmera olha para a esquerda: a forma (na origem) aparece no lado direito
+        controls.target.set(-15, 0, 0);
+        controls.update();
+      }
 
       scene.add(new THREE.AmbientLight(0x404060));
       const dl1 = new THREE.DirectionalLight(0xffffff, 1.5);

@@ -9,11 +9,11 @@ import { translations } from "@/lib/i18n";
 const stepIcons = [MessageSquare, FileText, Code2, Rocket] as const;
 const stepNums = ["01", "02", "03", "04"] as const;
 
-const ticketStatus = [
-  { label: "Descoberta",  cls: "text-sky-400 bg-sky-400/10 border-sky-400/20" },
-  { label: "Proposta",    cls: "text-purple-400 bg-purple-400/10 border-purple-400/20" },
-  { label: "Dev",         cls: "text-yellow-400 bg-yellow-400/10 border-yellow-400/20" },
-  { label: "Entrega",     cls: "text-green-400 bg-green-400/10 border-green-400/20" },
+const ticketStatusCls = [
+  "text-sky-400 bg-sky-400/10 border-sky-400/20",
+  "text-purple-400 bg-purple-400/10 border-purple-400/20",
+  "text-yellow-400 bg-yellow-400/10 border-yellow-400/20",
+  "text-green-400 bg-green-400/10 border-green-400/20",
 ] as const;
 
 function useCardTypewriter(text: string) {
@@ -138,8 +138,8 @@ export default function Projects() {
                         P{i + 1}
                       </span>
                     </div>
-                    <span className={`font-mono text-[10px] px-2 py-0.5 rounded border ${ticketStatus[i].cls}`}>
-                      {ticketStatus[i].label}
+                    <span className={`font-mono text-[10px] px-2 py-0.5 rounded border ${ticketStatusCls[i]}`}>
+                      {t.statusLabels[i]}
                     </span>
                   </div>
 
@@ -168,7 +168,7 @@ export default function Projects() {
                       </div>
                       <span className="font-mono text-[10px] text-zinc-600">@laisrodrigues</span>
                     </div>
-                    <span className="font-mono text-[10px] text-zinc-700">etapa {num}</span>
+                    <span className="font-mono text-[10px] text-zinc-700">{t.step} {num}</span>
                   </div>
                 </motion.div>
               );
