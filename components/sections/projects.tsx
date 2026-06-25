@@ -109,7 +109,7 @@ export default function Projects() {
         <div className="relative">
           <motion.div
             className="hidden lg:block absolute border-t-2 border-dashed border-[#3b82f6]/30 pointer-events-none z-0"
-            style={{ top: "5rem", left: "12.5%", right: "12.5%", transformOrigin: "left" }}
+            style={{ top: "6.75rem", left: "12.5%", right: "12.5%", transformOrigin: "left" }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: false, margin: "-50px" }}

@@ -110,7 +110,7 @@ export default function ProjectsCarousel() {
     <>
       <section
         id="projetos"
-        className="relative py-20 md:py-28 overflow-hidden bg-[#f8faff] dark:bg-[#050a14]"
+        className="relative py-20 md:py-28 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#f8faff] dark:bg-[#050a14]"
       >
         {/* Spotlight do topo */}
         <div
@@ -130,7 +130,7 @@ export default function ProjectsCarousel() {
           }}
         />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
+        <div className="relative z-10 max-w-5xl mx-auto">
           {/* Header */}
           <motion.div
             className="text-center mb-12 md:mb-14"
@@ -206,7 +206,7 @@ export default function ProjectsCarousel() {
 
                   {/* Content */}
                   <div className="flex flex-col flex-1 p-5">
-                    <div className="flex items-center gap-2 mb-3 flex-wrap">
+                    <div className="flex items-center gap-2 mb-3 min-h-[1.75rem]">
                       <span className={`font-mono text-xs px-2 py-0.5 ${badgeStyles[i]}`}>
                         {project.badge}
                       </span>
@@ -221,7 +221,7 @@ export default function ProjectsCarousel() {
                       )}
                     </div>
 
-                    <h3 className="font-mono text-base md:text-lg font-bold text-zinc-900 dark:text-white mb-2 leading-snug">
+                    <h3 className="font-mono text-base font-bold text-zinc-900 dark:text-white mb-2 leading-snug">
                       {project.title}
                     </h3>
 

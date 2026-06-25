@@ -14,7 +14,7 @@ export default function Timeline() {
   return (
     <section
       id="trajetoria"
-      className="relative pt-8 pb-20 md:pt-12 md:pb-32 px-4 md:px-8 lg:px-16"
+      className="relative pt-8 pb-20 md:pt-12 md:pb-32 px-4 md:px-8 lg:px-16 scroll-mt-16"
     >
       <div className="relative z-10 max-w-5xl mx-auto">
         <motion.div
