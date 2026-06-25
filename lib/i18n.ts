@@ -68,9 +68,9 @@ export const translations = {
       ],
     },
     upcomingProjects: {
-      eyebrow: "Em andamento",
-      title: "Projetos em construção",
-      subtitle: "O que estou desenvolvendo agora.",
+      eyebrow: "Portfólio",
+      title: "Meus projetos",
+      subtitle: "O que fiz e o que está por vir.",
       items: [
         {
           title: "Landing Page — Psicologia",
@@ -80,17 +80,17 @@ export const translations = {
           badge: "Negócio fechado",
         },
         {
-          title: "Sistema de Agendamento — Nail Studio",
-          status: "Em negociação",
+          title: "PWA de Agendamento — Nail Studio",
+          status: "Concluído",
           description:
-            "Landing page com sistema de agendamento online para estúdio de unhas.",
-          badge: "Em negociação",
+            "Aplicativo web progressivo (PWA) com sistema de agendamento online para estúdio de unhas.",
+          badge: "Concluído",
         },
         {
-          title: "App de Finanças PWA",
-          status: "Planejamento",
+          title: "Landing Page — Nail Studio",
+          status: "Em breve",
           description:
-            "Aplicativo financeiro progressivo com dashboard de gastos e metas.",
+            "Landing page de alta conversão para estúdio de unhas com foco em captação de novos clientes.",
           badge: "Em breve",
         },
       ],
@@ -221,9 +221,9 @@ export const translations = {
       ],
     },
     upcomingProjects: {
-      eyebrow: "In progress",
-      title: "Projects in the making",
-      subtitle: "What I'm building right now.",
+      eyebrow: "Portfolio",
+      title: "My projects",
+      subtitle: "What I've built and what's coming.",
       items: [
         {
           title: "Landing Page — Psychology",
@@ -233,17 +233,17 @@ export const translations = {
           badge: "Deal closed",
         },
         {
-          title: "Booking System — Nail Studio",
-          status: "In negotiation",
+          title: "Booking PWA — Nail Studio",
+          status: "Delivered",
           description:
-            "Landing page with online booking system for nail studio.",
-          badge: "In negotiation",
+            "Progressive web app (PWA) with online booking system for nail studio.",
+          badge: "Delivered",
         },
         {
-          title: "Finance PWA App",
-          status: "Planning",
+          title: "Nail Studio Landing Page",
+          status: "Coming soon",
           description:
-            "Progressive financial app with expense dashboard and goals.",
+            "High-converting landing page for nail studio focused on acquiring new clients.",
           badge: "Coming soon",
         },
       ],

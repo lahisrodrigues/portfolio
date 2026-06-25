@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { translations } from "@/lib/i18n";
 
@@ -44,23 +43,9 @@ const categories = [
   },
 ] as const;
 
-const stacks = [
-  ["Next.js", "Tailwind CSS"],
-  ["Next.js", "TypeScript"],
-  ["Next.js", "PWA", "TypeScript"],
-] as const;
-
-const pulseColors = ["bg-green-500", "bg-yellow-500", "bg-zinc-500"] as const;
-const badgeStyles = [
-  "bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400 border-green-200 dark:border-green-800",
-  "bg-yellow-100 dark:bg-yellow-950/50 text-yellow-700 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800",
-  "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700",
-] as const;
-
 export default function StackAndProjects() {
   const { lang } = useLanguage();
   const tStack = translations[lang].stack;
-  const tProjects = translations[lang].upcomingProjects;
 
   return (
     <section id="stack" className="relative py-20 md:py-32 overflow-hidden">
@@ -83,7 +68,7 @@ export default function StackAndProjects() {
         </motion.div>
 
         {/* Stack — layout editorial sem cards */}
-        <div className="mb-20 md:mb-24 space-y-0">
+        <div className="mb-0 space-y-0">
           {categories.map(({ label, color, techs }, ci) => (
             <motion.div
               key={label}
@@ -116,90 +101,6 @@ export default function StackAndProjects() {
           ))}
         </div>
 
-        {/* Projetos em andamento */}
-        <div id="projetos">
-          <motion.div
-            className="mb-10 md:mb-12 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="font-mono text-sky-600 dark:text-blue-400 text-xs tracking-widest uppercase mb-3">
-              {tProjects.eyebrow}
-            </p>
-            <h3 className="font-mono text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">
-              {tProjects.title}
-            </h3>
-            <p className="font-sans text-base text-zinc-600 dark:text-zinc-300">
-              {tProjects.subtitle}
-            </p>
-          </motion.div>
-
-          {/* Estilo C — Editorial: sem card, só tipografia + divisórias */}
-          <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
-            {tProjects.items.map(({ title, description, badge }, i) => {
-              const isClickable = i === 0;
-              const inner = (
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: i * 0.12 }}
-                  className="group py-8 flex flex-col sm:flex-row sm:items-start gap-4 hover:pl-3 transition-all duration-300"
-                >
-                  {/* Número grande */}
-                  <span className="font-mono text-5xl font-black leading-none select-none text-[#3b82f6]/40 shrink-0 w-16 text-right sm:text-right pt-1">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-
-                  {/* Conteúdo */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2 flex-wrap">
-                      <span className={`font-mono text-xs px-2 py-0.5 border ${badgeStyles[i]}`}>
-                        {badge}
-                      </span>
-                      {isClickable && (
-                        <span className="text-green-500 font-mono text-xs flex items-center gap-1">
-                          <span className="relative flex h-2 w-2">
-                            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${pulseColors[i]} opacity-60`} />
-                            <span className={`relative inline-flex rounded-full h-2 w-2 ${pulseColors[i]}`} />
-                          </span>
-                          LIVE
-                        </span>
-                      )}
-                      {isClickable && <ExternalLink size={13} className="text-zinc-400 group-hover:text-[#3b82f6] transition-colors" />}
-                    </div>
-
-                    <h3 className="font-mono text-xl md:text-2xl font-bold text-zinc-900 dark:text-white mb-2 group-hover:text-[#3b82f6] transition-colors duration-200">
-                      {title}
-                    </h3>
-
-                    <p className="font-sans text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-3 max-w-prose">
-                      {description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-3">
-                      {(stacks[i] as readonly string[]).map((tech) => (
-                        <span key={tech} className="font-mono text-xs text-zinc-400 dark:text-zinc-600">
-                          #{tech.toLowerCase().replace(/[\s.]/g, "")}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-
-              return isClickable ? (
-                <a key={title} href="https://psijuliedelazari.vercel.app/" target="_blank" rel="noopener noreferrer">
-                  {inner}
-                </a>
-              ) : (
-                <div key={title}>{inner}</div>
-              );
-            })}
-          </div>
-        </div>
       </div>
 
     </section>

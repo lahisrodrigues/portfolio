@@ -207,7 +207,7 @@ export default function Hero() {
 
       {/* Seta scroll down */}
       <a
-        href="#sobre"
+        href="#projetos"
         className="absolute bottom-24 left-1/2 -translate-x-1/2 z-[22] pointer-events-auto flex flex-col items-center gap-1 text-[#3b82f6]/70 hover:text-[#3b82f6] transition-colors duration-300"
         aria-label="Rolar para baixo"
       >
@@ -229,7 +229,7 @@ export default function Hero() {
         className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-20"
         style={{
           background: isDark
-            ? "linear-gradient(to bottom, transparent, #0d1b3e)"
+            ? "linear-gradient(to bottom, transparent, #0a0f1e)"
             : "linear-gradient(to bottom, transparent, #e0f2fe)",
         }}
       />

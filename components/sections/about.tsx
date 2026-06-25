@@ -32,26 +32,26 @@ export default function About() {
   return (
     <section
       id="sobre"
-      className="relative min-h-screen flex items-center py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#e0f2fe] dark:bg-[#0d1b3e]"
+      className="relative min-h-screen flex items-center py-20 md:py-32 px-4 md:px-8 lg:px-16 overflow-hidden bg-[#e0f2fe] dark:bg-[#0a0f1e]"
     >
-      {/* GIF de fundo — opacidade baixa para não competir com o conteúdo */}
+      {/* GIF de fundo */}
       <Image
         src="/hero-illustration.gif"
         alt=""
         fill
         unoptimized
         className="object-cover pointer-events-none select-none"
-        style={{ opacity: isLight ? 0.40 : 0.28 }}
+        style={{ opacity: isLight ? 0.40 : 0.22 }}
         aria-hidden="true"
       />
 
-      {/* Overlay */}
+      {/* Overlay — mesma paleta da matrix */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background: isLight
-            ? "linear-gradient(to bottom, rgba(186,225,255,0.62), rgba(200,238,255,0.55), rgba(186,225,255,0.62))"
-            : "linear-gradient(to bottom, rgba(10,15,30,0.72), rgba(13,27,62,0.62), rgba(10,15,30,0.72))",
+            ? "linear-gradient(to bottom, rgba(224,242,254,0.75), rgba(224,242,254,0.70), rgba(224,242,254,0.75))"
+            : "linear-gradient(to bottom, rgba(10,15,30,0.75), rgba(10,15,30,0.65), rgba(10,15,30,0.75))",
         }}
         aria-hidden="true"
       />
@@ -105,7 +105,7 @@ export default function About() {
                 <div className="p-4 font-mono text-xs space-y-2">
                   <div className="flex items-center gap-1.5 text-zinc-500">
                     <span className="text-green-400">❯</span>
-                    <span className="text-[#3b82f6]">./motivo</span>
+                    <span className="text-[#3b82f6]">{lang === "pt" ? "./motivo" : "./reason"}</span>
                     <span className="text-yellow-300">0{i + 1}</span>
                     <span className="text-zinc-600">--exec</span>
                   </div>
@@ -118,7 +118,7 @@ export default function About() {
                   </div>
                   <div className="flex items-center gap-1.5 text-green-400 pt-1 text-[10px]">
                     <span>✓</span>
-                    <span>concluído</span>
+                    <span>{lang === "pt" ? "concluído" : "done"}</span>
                     <span className="text-zinc-700 ml-1">exit 0</span>
                   </div>
                 </div>

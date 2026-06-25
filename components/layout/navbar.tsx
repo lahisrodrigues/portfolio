@@ -19,11 +19,11 @@ export default function Navbar() {
   const t = translations[lang].navbar;
 
   const navLinks = [
-    { label: t.about, href: "#sobre" },
-    { label: t.timeline, href: "#trajetoria" },
-    { label: t.stack, href: "#stack" },
     { label: t.projects, href: "#projetos" },
+    { label: t.about, href: "#sobre" },
     { label: t.process, href: "#processo" },
+    { label: t.stack, href: "#stack" },
+    { label: t.timeline, href: "#trajetoria" },
     { label: t.contact, href: "#contato" },
   ];
 
